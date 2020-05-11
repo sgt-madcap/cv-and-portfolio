@@ -1,0 +1,106 @@
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+}
+
+.layout-wrapper {
+    position: relative;
+    min-height: 100vh;
+}
+.app-sidenav {
+    color: white;
+    padding: 1.5rem;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: -400px;
+    width: 400px;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
+    bottom: 0 !important;
+    height: auto !important;
+}
+.app-sidenav a.btn-floating {
+    position: absolute;
+    top: 1rem;
+    right: -3rem;
+}
+.app-sidenav.open {
+    -webkit-transform: translateX(350px);
+    transform: translateX(400px);
+}
+.content-wrapper {
+    margin-left: 1rem;
+    padding: 3rem
+}
+.app-content {
+    transition: padding-left 0.5s;
+    padding-left: 400px
+}
+.app-content.full{
+    padding-left:0
+}
+.avatar {
+    margin: 1.5rem;
+    width: 85%;
+    border-radius: 50%;
+    filter: saturate(0);
+    transition: filter 0.5s
+}
+.avatar:hover {
+    filter: none
+}
+.app-sidenav-links {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;;
+}
+.app-sidenav-links li {
+    margin: 1rem;
+}
+.app-sidenav-links a {
+    color: white;
+    font-size: large;
+}
+.app-sidenav-links a:hover {
+    color: cyan;
+}
+.social svg {
+    margin: 0.5rem
+}
+.social #facebook {
+    transition: color 0.5s
+}
+.social #facebook:hover {
+    color: royalblue;
+    cursor: pointer;
+    transition: color 0.5s
+}
+.social #youtube {
+    transition: color 0.5s
+}
+.social #youtube:hover {
+    color: crimson;
+    cursor: pointer;
+    transition: color 0.5s ease-in-out;
+}
+.social #instagram {
+    transition: color 0.5s
+}
+.social #instagram:hover {
+    color: mediumvioletred;
+    cursor: pointer;
+    transition: color 0.5s;
+}
+.social #github {
+    transition: all 0.5s
+}
+.social #github:hover {
+    color: slategray;
+    cursor: pointer;
+    transition: color 0.5s
+}
