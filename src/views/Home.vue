@@ -82,60 +82,107 @@
         <div class="col m12 lg6 xl6">
           <div class="skills">
             <a class="left top skills-icon"
-              ><img src="/img/signs.svg" alt="hard-skills"
+              ><img src="/img/hard-skills.svg" alt="hard-skills"
             /></a>
 
-            <h5>Hard Skills:</h5>
+            <h5>{{ translations.section_resume.hardskills.title }}:</h5>
             <ul>
-              <li>HTML5</li>
-              <li>CSS3</li>
-              <li>Javascript, Typescript, NodeJS</li>
-              <li>VueJS, Nuxt</li>
-              <li>Sass, Less</li>
-              <li>Bootstrap, Materializecss, Vuetify</li>
-              <li>MongoDB, Firebase Realtime Database, Cloud Firestore, SQL</li>
-              <li>Socket.IO</li>
-              <li>REST.API</li>
-              <li>Languages: English, Russian, Serbian</li>
+              <li>
+                <span>HTML5</span><img src="/img/html5.svg" alt="html5" />
+              </li>
+              <li><span>CSS3</span><img src="/img/css3.svg" alt="css3" /></li>
+              <li>
+                <span>Javascript, Typescript, NodeJS, PHP</span
+                ><img src="/img/javascript.svg" alt="javascript" /><img
+                  src="/img/typescript.svg"
+                  alt="typescript"
+                /><img src="/img/nodejs.svg" alt="nodejs" /><img src="/img/php.svg" alt="php" />
+              </li>
+              <li>
+                <span>VueJS, Nuxt</span><img src="/img/vue.svg" alt="vue" /><img
+                  src="/img/nuxt.svg"
+                  alt="nuxt"
+                />
+              </li>
+              <li>
+                <span>Sass, Less</span
+                ><img src="/img/sass.svg" alt="sass" /><img
+                  src="/img/less.svg"
+                  alt="less"
+                />
+              </li>
+              <li>
+                <span>Bootstrap, Materializecss, Vuetify</span
+                ><img src="/img/bootstrap.svg" alt="bootstrap" /><img
+                  src="/img/materializecss.svg"
+                  alt="materializecss"
+                /><img src="/img/vuetify.svg" alt="vuetify" />
+              </li>
+              <li>
+                <span
+                  >MongoDB, Firebase Realtime Database, Cloud Firestore,
+                  SQL</span
+                ><img src="/img/mongodb.svg" alt="mongodb" /><img
+                  src="/img/firebase-realtime-database.svg"
+                  alt="firebase-realtime-database"
+                /><img
+                  src="/img/firebase-cloud-firestore.svg"
+                  alt="firebase-cloud-firestore"
+                /><img src="/img/sql.svg" alt="sql" />
+              </li>
+              <li>
+                <span>Socket.IO</span
+                ><img src="/img/socket-io.svg" alt="socket-io" />
+              </li>
+              <li>
+                <span>REST.API</span
+                ><img src="/img/rest-api.svg" alt="rest-api" />
+              </li>
+              <li>
+                <span>Languages: English, Russian, Serbian</span
+                ><img src="/img/uk.svg" alt="eng" /><img
+                  src="/img/rus.svg"
+                  alt="rus"
+                /><img src="/img/srb.svg" alt="srb" />
+              </li>
             </ul>
           </div>
         </div>
         <div class="col m12 lg6 xl6">
           <div class="skills">
             <a class="left top skills-icon"
-              ><img src="/img/business.svg" alt="soft-skills"
+              ><img src="/img/soft-skills.svg" alt="soft-skills"
             /></a>
 
-            <h5>Soft Skills</h5>
+            <h5>{{ translations.section_resume.softskills.title }}:</h5>
             <ul>
-              <li>Critical thinking</li>
-              <li>Creativeness</li>
-              <li>Attentiveness</li>
-              <li>Responsibility</li>
-              <li>Perseverance</li>
-              <li>Easy learning</li>
-              <li>Sense of beauty</li>
-              <li>Friendly temper</li>
-              <li>
-                Understanding and acting as an intermediary between the work of
-                the back-end developer and the web designer.
+              <li
+                v-for="skill in translations.section_resume.softskills.skills"
+                :key="skill"
+              >
+                {{ skill }}
               </li>
-              <li>I know how to google :)</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col s6">
-          <div class="skills">
+          <div class="skills certificates">
             <a class="left top skills-icon"
               ><img src="/img/certificate.svg" alt="hard-skills"
             /></a>
 
-            <h5>Certificates:</h5>
+            <h5>{{ translations.certificates.title }}:</h5>
             <ul>
-              <li>Cert1</li>
-              <li>Cert2</li>
+              <li
+                v-for="cert in translations.certificates.certs"
+                :key="cert.title"
+              >
+                <a :href="cert.url" target="_blank">
+                  {{ cert.title }}
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -231,12 +278,23 @@ ul:not(.browser-default) > li::before {
 .skills h5 {
   text-align: left;
   margin-bottom: 0 !important;
-  padding-bottom: 2rem;
+  margin-top: 1.6rem;
+  padding-bottom: 1rem;
   border-left: 2px solid black;
   padding-left: 2rem;
 }
 .skills ul {
   margin-top: 0;
+}
+.skills ul li {
+  display: flex;
+  align-items: center;
+}
+.skills ul li img {
+  height: 20px;
+  width: auto;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .skills-icon {
   position: absolute;
@@ -274,5 +332,11 @@ ul:not(.browser-default) > li::before {
 }
 .download-cv {
   justify-content: flex-start;
+}
+.certificates a {
+  color: #2c3e50;
+}
+.certificates a:hover {
+  color: darkcyan;
 }
 </style>

@@ -6,11 +6,11 @@
       ><i class="material-icons">menu</i></a
     >
     <img class="avatar" src="@/assets/04crop.jpg" alt="" />
-    <h4>Nikolai Tkachev</h4>
+    <h4>{{ translations.name }}</h4>
     <h5 class="cyan-text">Frontend Developer</h5>
     <div class="app-sidenav-links">
       <ul ref="links">
-        <li v-for="link in links" :key="link.name">
+        <li v-for="link in translations.links" :key="link.name">
           <a
             :href="'#' + link.name"
             :class="{ 'cyan-text': link.active }"
@@ -49,14 +49,6 @@
 export default {
   props: ['lang', 'translations'],
   data: () => ({
-    translation: {},
-    links: [
-      { name: 'Home', active: true },
-      { name: 'About', active: false },
-      { name: 'Portfolio', active: false },
-      { name: 'Resume', active: false },
-      { name: 'Blog', active: false }
-    ],
     flags: [
       { name: 'rus', url: '/img/rus.svg', active: false },
       { name: 'eng', url: '/img/uk.svg', active: true }
