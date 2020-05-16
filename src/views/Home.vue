@@ -96,7 +96,10 @@
                 ><img src="/img/javascript.svg" alt="javascript" /><img
                   src="/img/typescript.svg"
                   alt="typescript"
-                /><img src="/img/nodejs.svg" alt="nodejs" /><img src="/img/php.svg" alt="php" />
+                /><img src="/img/nodejs.svg" alt="nodejs" /><img
+                  src="/img/php.svg"
+                  alt="php"
+                />
               </li>
               <li>
                 <span>VueJS, Nuxt</span><img src="/img/vue.svg" alt="vue" /><img
@@ -192,7 +195,7 @@
               ><img src="/img/employment2.svg" alt="soft-skills"
             /></a>
 
-            <h5>Employment:</h5>
+            <h5>{{ translations.employment.title }}:</h5>
             <ul>
               <li>Job 1</li>
               <li>Job 2</li>
@@ -285,10 +288,6 @@ ul:not(.browser-default) > li::before {
 }
 .skills ul {
   margin-top: 0;
-}
-.skills ul li {
-  display: flex;
-  align-items: center;
 }
 .skills ul li img {
   height: 20px;

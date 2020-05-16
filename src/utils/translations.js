@@ -61,6 +61,9 @@ const translations = {
           url: 'https://geekbrains.ru/certificates/811943.en'
         }
       ]
+    },
+    employment: {
+      title: 'Employment'
     }
   },
   rus: {
@@ -125,6 +128,9 @@ const translations = {
           url: 'https://geekbrains.ru/certificates/811943.ru'
         }
       ]
+    },
+    employment: {
+      title: 'Опыт работы'
     }
   }
 }

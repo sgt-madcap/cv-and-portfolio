@@ -49,4 +49,15 @@ export default {
 
 <style>
 @import 'assets/index.css';
+@media (max-width: 1023px) {
+  .app-content {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+@media (max-width: 320px) {
+  .content-wrapper {
+    padding: 0 !important;
+  }
+}
 </style>
