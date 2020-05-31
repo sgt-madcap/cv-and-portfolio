@@ -22,6 +22,7 @@
     transition: transform 0.5s, -webkit-transform 0.5s;
     bottom: 0 !important;
     height: auto !important;
+    z-index: 2000;
 }
 .app-sidenav a.btn-floating {
     position: absolute;
@@ -37,12 +38,23 @@
     padding: 3rem
 }
 .app-content {
+    text-align: justify;
     transition: padding-left 0.5s;
     padding-left: 400px
 }
-.app-content.full{
-    padding-left:0
+
+.app-content h3 {
+    text-align: center;
 }
+
+.app-content.full{
+    padding-left: 0
+}
+
+.contentSmall {
+    margin-left: 0
+}
+
 .avatar {
     margin: 1.5rem;
     width: 85%;
@@ -103,4 +115,35 @@
     color: slategray;
     cursor: pointer;
     transition: color 0.5s
+}
+
+.topbarWrapper {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2000;
+    background-color: black;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.topbarLinks {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.topbarLinks a {
+    font-weight: bold;
+    color: white;
+    transition: all 0.5s;
+}
+
+.topbarLinks li {
+    padding: 10px;
 }

@@ -16,6 +16,8 @@ import 'materialize-css'
 import 'materialize-css/dist/css/materialize.css'
 import 'material-design-icons/iconfont/material-icons.css'
 
+export const eventEmitter = new Vue()
+
 library.add(faTwitter, faGithub, faFacebook, faInstagram, faYoutube)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

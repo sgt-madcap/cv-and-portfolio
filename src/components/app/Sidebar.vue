@@ -5,55 +5,38 @@
       class="btn-floating btn-small waves-effect waves-light black"
       ><i class="material-icons">menu</i></a
     >
+
     <img class="avatar" src="@/assets/04crop.jpg" alt="" />
     <h4>{{ translations.name }}</h4>
     <h5 class="cyan-text">Frontend Developer</h5>
     <div class="app-sidenav-links">
-      <ul ref="links">
-        <li v-for="link in translations.links" :key="link.name">
+      <ul>
+        <li v-for="link in links" :key="link.url">
           <a
-            :href="'#' + link.name"
+            :href="'#' + link.url"
             :class="{ 'cyan-text': link.active }"
-            v-smooth-scroll
-            @click="linkClicked"
-            >{{ link.name.toUpperCase() }}</a
+            v-smooth-scroll="{ offset: link.url === 'About' ? -30 : 0 }"
+            @click="linkClicked()"
+            >{{ link[lang].toUpperCase() }}</a
           >
         </li>
       </ul>
     </div>
-    <div class="lang">
-      <img
-        v-for="flag in flags"
-        :key="flag.url"
-        :class="{'activeLang': flag.active}"
-        @click="changeLang(flag.name)"
-        :src="flag.url"
-        :alt="flag.name"
-      />
-    </div>
-    <div class="social">
-      <font-awesome-icon id="facebook" :icon="['fab', 'facebook']" size="2x" />
-      <font-awesome-icon id="youtube" :icon="['fab', 'youtube']" size="2x" />
-      <font-awesome-icon
-        id="instagram"
-        :icon="['fab', 'instagram']"
-        size="2x"
-      />
-      <font-awesome-icon id="github" :icon="['fab', 'github']" size="2x" />
-    </div>
+    <LangSwitcher style="margin: 1rem" />
+    <Social />
   </div>
 </template>
 
 <script>
+import LangSwitcher from './LangSwitcher'
+import Social from './Social'
+
+// TODO
+// Navigation Mixin here
 
 export default {
-  props: ['lang', 'translations'],
-  data: () => ({
-    flags: [
-      { name: 'rus', url: '/img/rus.svg', active: false },
-      { name: 'eng', url: '/img/uk.svg', active: true }
-    ]
-  }),
+  components: { Social, LangSwitcher },
+  props: ['lang', 'links', 'translations'],
   methods: {
     toggle() {
       this.$emit('toggleSidebar')
@@ -63,44 +46,16 @@ export default {
       let idx = this.flags.findIndex(el => el.name === val)
       this.flags[idx].active = true
       this.flags.forEach(el => {
-        if(el.name !== val) {
+        if (el.name !== val) {
           el.active = false
         }
       })
     },
     linkClicked(event) {
-      let link = event.srcElement.innerHTML
-      this.links.forEach(l => {
-        if (l.name.toUpperCase() === link) {
-          l.active = true
-        } else {
-          l.active = false
-        }
-      })
+      let link = event.target.innerHTML
+
+      this.$emit('linkClicked', { lang: this.lang, link })
     }
   }
 }
 </script>
-
-<style>
-.lang {
-  margin: 1rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-.lang img {
-  cursor: pointer;
-  width: 28px;
-  margin: 0.5rem;
-  filter: saturate(0);
-  transition: filter 0.5s;
-}
-.lang img:hover {
-  filter: none;
-}
-.activeLang {
-  filter: none !important;
-}
-</style>
