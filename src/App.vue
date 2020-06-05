@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <ModalVideo v-if="showModal" />
     <div class="layout-wrapper">
       <Topbar
         v-show="windowWidth <= 768"
@@ -23,6 +24,7 @@
       >
         <router-view
           :translations="translations[lang]"
+          :lang="lang"
           class="app-content"
           :class="{
             full: !show || windowWidth <= 768,
@@ -38,11 +40,13 @@
 import translations from '@/utils/translations.js'
 import Sidebar from '@/components/app/Sidebar.vue'
 import Topbar from '@/components/app/Topbar.vue'
+import ModalVideo from '@/components/app/ModalVideo.vue'
 import { eventEmitter } from './main'
 
 export default {
   data: () => ({
     show: false,
+    showModal: false,
     lang: 'eng',
     translations: translations,
     windowWidth: 0
@@ -87,6 +91,14 @@ export default {
   //   this.windowWidth = window.innerWidth
   // },
   created() {
+    eventEmitter.$on('showModalVideo', () => {
+      this.showModal = true
+    })
+
+    eventEmitter.$on('closeModalVideo', () => {
+      this.showModal = false
+    })
+
     eventEmitter.$on('langChanged', val => {
       this.lang = val
     })
@@ -97,7 +109,8 @@ export default {
   },
   components: {
     Sidebar,
-    Topbar
+    Topbar,
+    ModalVideo
   }
 }
 </script>

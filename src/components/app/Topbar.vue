@@ -5,7 +5,7 @@
         style="flex-direction: column"
         @langChanged="changeLang(val)"
       />
-      <img class="avatar" src="@/assets/04crop.jpg" alt="" />
+      <img class="avatar" src="@/assets/img/avatar.jpg" alt="" />
     </div>
 
     <ul class="topbarLinks">

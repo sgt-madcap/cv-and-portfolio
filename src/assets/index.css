@@ -92,6 +92,9 @@
     cursor: pointer;
     transition: color 0.5s
 }
+.social a {
+    color: white
+}
 .social #youtube {
     transition: color 0.5s
 }

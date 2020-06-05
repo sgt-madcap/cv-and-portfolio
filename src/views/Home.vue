@@ -1,12 +1,14 @@
 <template>
   <div>
     <section id="About">
-      <h3>{{ translations.about }}</h3>
+      <div class="row row-header">
+        <h4>{{ translations.about }}</h4>
+      </div>
       <p>{{ translations.section_about.description }}</p>
     </section>
     <section id="Skills" class="fullHeightSection">
       <div class="row row-header">
-        <h3>{{ translations.skills }}</h3>
+        <h4>{{ translations.skills }}</h4>
       </div>
       <div class="row">
         <div class="col m12 lg6 xl6 s12">
@@ -18,9 +20,12 @@
             <h5>{{ translations.section_skills.hardskills.title }}:</h5>
             <ul>
               <li>
-                <span>HTML5</span><img src="@/assets/img/html5.svg" alt="html5" />
+                <span>HTML5</span
+                ><img src="@/assets/img/html5.svg" alt="html5" />
               </li>
-              <li><span>CSS3</span><img src="@/assets/img/css3.svg" alt="css3" /></li>
+              <li>
+                <span>CSS3</span><img src="@/assets/img/css3.svg" alt="css3" />
+              </li>
               <li>
                 <span>Javascript, Typescript, NodeJS, PHP</span
                 ><img src="@/assets/img/javascript.svg" alt="javascript" /><img
@@ -32,7 +37,8 @@
                 />
               </li>
               <li>
-                <span>VueJS, Nuxt</span><img src="@/assets/img/vue.svg" alt="vue" /><img
+                <span>VueJS, Nuxt</span
+                ><img src="@/assets/img/vue.svg" alt="vue" /><img
                   src="@/assets/img/nuxt.svg"
                   alt="nuxt"
                 />
@@ -106,9 +112,9 @@
     </section>
     <section id="CertsEmployment" class="fullHeightSection">
       <div class="row row-header">
-        <h3>
+        <h4>
           {{ translations.section_certs_employment.title }}
-        </h3>
+        </h4>
       </div>
       <div class="row">
         <div class="col m12 lg6 xl6 s12">
@@ -144,8 +150,9 @@
             </h5>
             <ul>
               <li>
-                <a href="http://917smith.com/" target="_blank">917 Smith Inc</a>
-                <p>I made some work: description goes here</p>
+                <a href="http://917smith.com/" target="_blank">917 Smith Inc </a
+                ><span>- Web Developer</span>
+                <p>I made some work: descr@@iption goes here</p>
               </li>
               <li>Job 2</li>
             </ul>
@@ -154,38 +161,48 @@
       </div>
     </section>
     <section id="Portfolio">
-      <h3>{{ translations.portfolio }}</h3>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-        accusantium amet assumenda blanditiis consequuntur dignissimos
-        distinctio dolorem, facere fugiat hic illum laborum maiores molestias
-        nam nulla obcaecati odio placeat praesentium suscipit voluptas? Aliquam
-        aperiam atque deleniti deserunt dignissimos eius esse fugiat incidunt,
-        ipsa iste labore laudantium molestias mollitia necessitatibus obcaecati
-        pariatur quae quaerat quasi qui, quibusdam tempore tenetur, voluptas
-        voluptate. Architecto consectetur dolores iste iure necessitatibus, nemo
-        qui sint? Aspernatur at cupiditate nihil quaerat repellendus sint
-        tenetur! Aliquam aperiam architecto atque autem consequatur consequuntur
-        corporis deleniti dignissimos doloremque ea eligendi eum ex ipsam iure,
-        laboriosam laborum minima nobis nulla quae, quidem reprehenderit
-        repudiandae sequi voluptas! Asperiores blanditiis consectetur
-        consequatur corporis delectus doloremque dolorum eveniet in incidunt
-        labore molestiae nam nisi non nulla officia optio possimus quia
-        reprehenderit sequi sit tenetur unde ut veritatis vitae, voluptatibus! A
-        alias aliquid animi dignissimos doloremque dolorum earum enim esse eum
-        expedita inventore molestiae molestias nesciunt nostrum obcaecati omnis
-        possimus quaerat quibusdam ratione recusandae rem reprehenderit
-        similique sint, suscipit tenetur veniam voluptatibus. Accusamus
-        accusantium animi autem cumque cupiditate debitis doloremque eligendi
-        eos esse, in incidunt ipsam ipsum iste iure laudantium nemo non nulla
-        odio optio possimus quae quisquam quod repellendus reprehenderit tempora
-        tenetur totam ullam.
-      </p>
+      <div class="row row-header">
+        <h4>{{ translations.portfolio }}</h4>
+      </div>
+      <div class="row">
+        <div class="card">
+          <div class="front">
+            <h4>917 Smith Inc</h4>
+            <img
+              src="https://secureservercdn.net/160.153.137.40/s4w.977.myftpupload.com/wp-content/uploads/brizy/324/assets/images/iW=227&iH=131&oX=0&oY=1&cW=227&cH=130/logo.png"
+              alt="917-smith-inc"
+            />
+          </div>
+          <div class="back">
+            <a @click.stop="showModalVideo" href="#">
+              <font-awesome-icon
+                class="cardPlayback"
+                color="black"
+                id="instagram"
+                :icon="['far', 'play-circle']"
+                size="4x"
+              />
+            </a>
+<!--            <button @click="showModalVideo" class="btn" flat>-->
+<!--              <i class="material-icons left">slideshow</i>Show demo-->
+<!--            </button>-->
+          </div>
+        </div>
+      </div>
     </section>
     <section id="Resume">
       <div class="row">
         <div class="col download-cv">
-          <button class="btn waves-effect cyan darken-2">Download CV</button>
+          <a
+            :href="
+              this.lang === 'eng'
+                ? '/files/Nikolai_Tkachev_-_Front-end_developer_eng.pdf'
+                : '/files/Nikolai_Tkachev_-_Front-end_developer_rus.pdf'
+            "
+            target="_blank"
+          >
+            <button class="btn waves-effect cyan darken-2">Download CV</button>
+          </a>
         </div>
       </div>
     </section>
@@ -193,9 +210,16 @@
 </template>
 
 <script>
+import { eventEmitter } from '../main'
+
 export default {
-  props: ['translations'],
-  name: 'Home'
+  props: ['translations', 'lang'],
+  name: 'Home',
+  methods: {
+    showModalVideo() {
+      eventEmitter.$emit('showModalVideo')
+    }
+  }
 }
 </script>
 
@@ -265,7 +289,8 @@ ul:not(.browser-default) > li::before {
 .row-header {
   margin: 0 !important;
 }
-.row-header h3 {
+.row-header h4 {
+  text-align: center;
   width: 100%;
 }
 .fullHeightSection .col {
@@ -281,14 +306,66 @@ ul:not(.browser-default) > li::before {
   display: flex;
 }
 .download-cv {
+  padding-left: 0 !important;
   justify-content: flex-start;
 }
+
+.download-cv button {
+  margin-top: 1.5rem;
+}
+
 .certificates a,
 .employment a {
   color: #2c3e50;
 }
 .certificates a:hover,
 .employment a:hover {
+  color: darkcyan;
+}
+
+/* CARD ANIMATION */
+.card {
+  margin: 11px;
+  box-shadow: none;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  perspective: 1000px;
+  background: none;
+}
+.front,
+.back {
+  border: 1px solid gray;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+  backface-visibility: hidden;
+  border-radius: 10px;
+}
+.back {
+  background-color: #bdbdbd;
+  transform: rotateY(180deg);
+}
+.card:hover .front {
+  transform: rotateY(180deg);
+}
+.card:hover .back {
+  transform: rotateY(360deg);
+}
+.card h4 {
+  margin-top: 0;
+}
+.card .cardPlayback {
+  transition: 0.5s
+}
+.card .cardPlayback:hover {
   color: darkcyan;
 }
 </style>

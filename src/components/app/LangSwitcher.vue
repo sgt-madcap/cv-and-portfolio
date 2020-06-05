@@ -5,7 +5,7 @@
       :key="flag.url"
       :class="{ activeLang: flag.active }"
       @click="changeLang(flag.name)"
-      :src="flag.url"
+      :src="getImgUrl(flag.url)"
       :alt="flag.name"
     />
   </div>
@@ -18,11 +18,14 @@ export default {
   props: ['lang', 'links', 'translations'],
   data: () => ({
     flags: [
-      { name: 'rus', url: '@assets/img/uk.svg', active: false },
-      { name: 'eng', url: '@assets/img/rus.svg', active: true }
+      { name: 'rus', url: 'rus.svg', active: false },
+      { name: 'eng', url: 'uk.svg', active: true }
     ]
   }),
   methods: {
+    getImgUrl(img) {
+      return require('@/assets/img/' + img)
+    },
     changeLang(val) {
       eventEmitter.$emit('langChanged', val)
       let idx = this.flags.findIndex(el => el.name === val)

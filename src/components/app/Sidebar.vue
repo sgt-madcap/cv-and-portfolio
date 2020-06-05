@@ -6,7 +6,7 @@
       ><i class="material-icons">menu</i></a
     >
 
-    <img class="avatar" src="@/assets/04crop.jpg" alt="" />
+    <img class="avatar" src="@/assets/img/avatar.jpg" alt="" />
     <h4>{{ translations.name }}</h4>
     <h5 class="cyan-text">Frontend Developer</h5>
     <div class="app-sidenav-links">
